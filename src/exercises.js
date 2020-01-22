@@ -150,10 +150,10 @@ function consecutive(numbers) {
       return true;
     }
     else {
-      return false;
+      return true;
     }
   }
-} 
+}
 
 function balance(numbers) {
   if (!numbers || numbers.length < 2 || numbers.some(isNaN) || numbers.some(Number.isInteger) === false) {
