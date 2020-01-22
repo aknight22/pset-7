@@ -2,7 +2,7 @@ function commonEnd(a, b) {
   if (!a || a.length === 0 || !b || b.length === 0) {
     return false;
   }
-if (a[0]===b[0] || last(a) === last(b)) {
+if (a[0]===b[0]) {
   return true;
   } else {
   return false;
