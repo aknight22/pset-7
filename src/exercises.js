@@ -21,17 +21,21 @@ function commonEnd(a, b) {
 }
 
 function endsMeet(values, n) {
-  let array1 = [];
-  let array2 = [];
-  if (!values || values.length < n || n < 1 || !Number.isInteger(n)) {
-    return [];
+  let empty = [];
+  let arr = [];
+  if (!values || values.length < n || n < 0) {
+    return arr;
   }
-  else {
-      array1 = values.slice(0, n);
-      array2 = values.slice(values.length - n, values.length + 1);
-      newArray = array1.concat(array2);
-      return newArray;
+  for (i = 0; i < n; i++) {
+    arr.push(values[i]);
   }
+  for (z = values.length - n; z < values.length; z++) {
+    arr.push(values[z])
+  }
+  if (n === 0) {
+    return empty;
+  }
+  return arr
 }
 
 function difference(numbers) {
@@ -65,40 +69,55 @@ function max(number) {
 }
 
 function middle(values) {
-  let newArray = [];
-  if (!values || values.length < 3 || values.length % 2 === 0) {
+  let array = []
+  if (!values || values.length < 3 || values.length % 2 == 0) {
     return [];
   }
-  else {
-    middleMiddle = values[(values.length - 1) / 2];
-    firstMiddle = values[((values.length - 1) / 2) - 1];
-    lastMiddle = values[((values.length - 1) / 2) + 1];
-
-    newArray.push(firstMiddle, middleMiddle, lastMiddle);
-
-    return newArray;
-  }
-
-
+  let index = (values.length/2)-1 + 0.5
+  let two_middle = values[index]
+  let one_middle = values[index - 1]
+  let three_middle = values[index + 1]
+  array.push(one_middle);
+  array.push(two_middle);
+  array.push(three_middle);
+  return array;
 }
 
 function increasing(numbers) {
-  let flag = 0;
-  if (!numbers || numbers.length < 3 || numbers.some(isNaN) || numbers.some(Number.isInteger) === false) {
+  let tmp = numbers;
+  if (!tmp || tmp.length < 3) {
     return false;
   }
-  else {
-    for (let i = 0; i < numbers.length; i++) {
-        if (numbers[i] < numbers[i + 1] && numbers[i + 1] < numbers[i + 2]) {
-          flag = 1;
-          return true;
-        }
-      }
-      if (flag === 0) {
-        return false;
-      }
+  if (tmp.some(isNaN)) {
+    return false;
+  }
+  for (i = 0; i < tmp.length; i++) {
+    if (tmp[i] % 1 != 0) {
+      return false;
     }
   }
+  let counter = 0
+  let one_last = -1
+  for (x = 0; x < tmp.length; x++) {
+    if (tmp[x] == one_last + 1) {
+      one_last = tmp[x]
+      if (tmp[x+1] == one_last + 1) {
+        return true
+        counter = 1
+        break;
+      }
+      else {
+      one_last = -1
+    }
+      }
+    else {
+      one_last = tmp[x]
+    }
+  }
+  if (counter == 0) {
+    return false;
+  }
+}
 
 function everywhere(values, x) {
   let flag = 1;
