@@ -150,7 +150,7 @@ function consecutive(numbers) {
       return true;
     }
     else {
-      return true;
+      return false;
     }
   }
 }
