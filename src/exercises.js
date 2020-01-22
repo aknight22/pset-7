@@ -153,7 +153,7 @@ function consecutive(numbers) {
       return false;
     }
   }
-}
+} 
 
 function balance(numbers) {
   if (!numbers || numbers.length < 2 || numbers.some(isNaN) || numbers.some(Number.isInteger) === false) {
